@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Calculator</title>
+    <style>
+        #calculator {
+            width: 400px;
+            margin: 0 auto;
+            padding: 0 auto;
+            border: 5px solid #ccc;
+            border-radius: 15px;
+            background-color:black;
+        }
+
+        input[type="text"],
+        input[type="button"] {
+            width: 80px;
+            height: 50px;
+            margin: 5px;
+            font-size: 24px;
+        }
+
+        #display {
+            width: 340px;
+            border: 2px solid #000;
+            color: black;
+            background-color: white;
+            border-radius: 8px solid black;
+        }
+
+        .button {
+            display: inline-flex;
+            color: black;
+            background-color: white;
+            text-align: center;
+            justify-content: center;
+            border-radius: 10%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            margin: 5px;
+        }
+
+        .button.ac {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="calculator">
+        <input type="text" id="display" disabled>
+        <input type="button" value="AC" onclick="clearDisplay()" class="button ac">
+        <input type="button" value="1" onclick="appendToDisplay('1')" class="button">
+        <input type="button" value="2" onclick="appendToDisplay('2')" class="button">
+        <input type="button" value="3" onclick="appendToDisplay('3')" class="button">
+        <input type="button" value="4" onclick="appendToDisplay('4')" class="button">
+        <input type="button" value="5" onclick="appendToDisplay('5')" class="button">
+        <input type="button" value="6" onclick="appendToDisplay('6')" class="button">
+        <input type="button" value="7" onclick="appendToDisplay('7')" class="button">
+        <input type="button" value="8" onclick="appendToDisplay('8')" class="button">
+        <input type="button" value="9" onclick="appendToDisplay('9')" class="button">
+        <input type="button" value="0" onclick="appendToDisplay('0')" class="button">
+        <input type="button" value="*" onclick="appendToDisplay('*')" class="button">
+        <input type="button" value="+" onclick="appendToDisplay('+')" class="button">
+        <input type="button" value="/" onclick="appendToDisplay('/')" class="button">
+        <input type="button" value="." onclick="appendToDisplay('.')" class="button">
+        <input type="button" value="=" onclick="calculate()" class="button">
+    </div>
+
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculate() {
+            try {
+                var result = eval(document.getElementById('display').value);
+                document.getElementById('display').value = result;
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+    </script>
+</body>
+
+</html>
